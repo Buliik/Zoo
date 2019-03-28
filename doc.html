@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle pouľitého editoru -->
+
+<h1>Správa ZOO</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Bobua Matej <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xbobul02@stud.fit.vutbr.cz">xbobul02@stud.fit.vutbr.cz</a> -
+		Sprava uzivatelu, Admin/User
+	</dd>
+	<dd>Bulawa David <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xbulaw00@stud.fit.vutbr.cz">xbulaw00@stud.fit.vutbr.cz</a> - 
+		Spojenie s databázou, Formuláre 
+	</dd>
+	<dd>Čeleďa Jan  <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xceled00@stud.fit.vutbr.cz">xceled00@stud.fit.vutbr.cz</a> - 
+		Grafika a design, ošetření bugů
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="http://www.stud.fit.vutbr.cz/~xbulaw00/IIS">http://www.stud.fit.vutbr.cz/~xbulaw00/IIS</a></dd>
+	<dd>(pokud má aplikace více vstupních stránek, napiąte obdobně daląí URL)</dd>
+</dl>
+
+<h2>Uľivatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>vąech rolí uľivatelů</strong>.</p>
+<table>
+<tr><th>Login(rč)</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>1</td><td>admin</td><td>Administrátor</td></tr>
+<tr><td>2</td><td>medic</td><td>Ošetřovatel</td></tr>
+</table>
+
+<h2>Implementace</h2>
+<p> Celý projekt je napsán za pomoci frameworku nette 2.3. Design je vytvořen ve frameworku bootstrap 3.3.6. Každý proces má svůj vlastní presenter, krmení je ve skriptu FeedPresenter, čištění je ve skriptu CleanPresenter, výběhy jsou ve skriptu CoopPresenter, ošetřovatelé jsou ve skriptu MedicPresenter, zvířata jsou ve skriptu AnimalPresenter, školení jsou ve skriptu TrainPresenter
+V návrhu databáze jsme přidali tabulku školení, kde může administrátor přidat pracovníkovi školení k jednotlivým typum zvěře a výběhů.
+</p>
+
+<h2>Instalace</h2>
+<ul>
+<li>Rozbalte soubor xbulaw00.zip a složku sandbox zkopírujte na server.</li>
+<li>Softwarové požadavky: PHP 6.5.3</li>
+<li>V souboru xbulaw00 se nachází skript zoo.sql, jeho spuštění inicializuje celou databázi a vloží do ní úvodní data.</li>
+</ul>
+
+<h2>Známé problémy</h2>
+<p>
+Neprobíhá validace rodného čísla z důvodu zjednodušení práce s aplikací, stačí tedy zadat pouze jednočíselnou hodnotu.
+Z časových důvodů nebyla implementovaná funkce pro označení zvíře za mrtvé, přidávání dat do databáze a tím pádem i práce s daty a kontrola, zda má pracovník oprávnění pro dané číštění či krmení.
+</p>
+
+</body>
+</html>

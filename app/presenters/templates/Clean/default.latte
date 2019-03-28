@@ -1,0 +1,39 @@
+{block content}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+ <div class="form-group"> <a n:href="add" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Přidat záznam</a> </div>
+{if count($cleans)>0}
+                            <table class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Výběh</th>
+                                        <th>Ošetřovatel</th>                                      
+                                        <th>Začátek</th>
+                                        <th>Konec</th>  
+                                        <th>Akce</th>                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach $cleans as $clean}
+                                        <tr>
+                                            <td>{$clean->id}</td>
+                                            <td>{$clean->ref('vybeh','idvy')->id} - {$clean->ref('vybeh','idvy')->type}</td>
+                                            <td>{$clean->ref('osetrovatel','idpr')->jmeno} {$clean->ref('osetrovatel','idpr')->prijmeni}</td>
+                                            <td>{$clean->beg|date:'d.m.Y H:s'}</td>
+                                            <td>{$clean->fin|date:'d.m.Y H:s'}</td>                                           
+                                            <td><a  n:href="edit, $clean->id" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>Editovat</a><a n:href="delete!, $clean->id" class="btn btn-danger btn-sm"><i class="fa fa-eye"></i>Odstranit</a></td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                        {else}
+                            <div class="alert alert-info">
+                                V systému není žádné čištění.
+                            </div>
+{/if}
+          </div> 
+          </div> 
+          </div>

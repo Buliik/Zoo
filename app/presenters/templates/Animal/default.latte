@@ -1,0 +1,43 @@
+{block content}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+         
+         <div class="form-group"> <a n:href="add" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Přidat záznam</a> </div>
+{if count($animals)>0}
+                            <table class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Jméno</th>
+                                        <th>Druh</th>
+                                        <th>Výskyt</th>
+                                        <th>Výběh</th>
+                                        <th>Datum narození</th>
+                                        <th>Poslední krmení</th>
+                                        <th>Akce</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach $animals as $animal}
+                                        <tr>
+                                            <td>{$animal->id}</td>
+                                            <td>{$animal->jmeno}</td>
+                                            <td>{$animal->druh}</td>
+                                            <td>{$animal->occurence}</td>
+                                            <td>{$animal->idvy}</td>
+                                            <td>{$animal->bd|date:'d.m.Y'}</td>
+                                            <td>{$animal->lf}</td>
+                                            <td><a n:href="edit, $animal->id" class="btn btn-default btn-sm"><i class="fa fa-eye"></i> Zobrazit</a><a n:href="delete!, $animal->id" class="btn btn-danger btn-sm"><i class="fa fa-eye"></i>Odstranit</a></td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                        {else}
+                            <div class="alert alert-info">
+                                V systému nejsou žádná zvířata.
+                            </div>
+{/if}
+                 </div>
+               </div>
+              </div>

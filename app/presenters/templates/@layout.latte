@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>IS ZOO</title>
+
+    <!-- Bootstrap -->
+    <link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" n:href="Homepage:default">Hlavní stránka</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav"> 
+      {if $user->getIdentity()->role == "admin"}    
+        <li><a n:href="Medic:default">Zaměstnanci</a></li>{/if}
+        <li><a n:href="Animal:default">Zvířata</a></li>
+        <li><a n:href="Coop:default">Výběhy</a></li>
+        <li><a n:href="Feed:default">Krmení</a></li>
+        <li><a n:href="Clean:default">Čištění</a></li>
+       {if $user->getIdentity()->role == "admin"} 
+        <li><a n:href="Train:default">Školení</a></li>{/if}
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+         
+         <p class="login-box">                           
+                            {if !$user->isLoggedIn()}
+                                <li><a n:href="Sign:in">Přihlášení</a></li>
+                            {else}
+                                 <li> <a n:href="Homepage:">Přihlášen jako {$user->getIdentity()->data["jmeno"]} {$user->getIdentity()->data["prijmeni"]}</a></li> 
+                                 <li> <a n:href="Secured:logout">Odhlásit se</a> </li>
+                            {/if}
+        </p>  
+       
+      </ul>  
+        
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    {block content/}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{$basePath}/js/bootstrap.min.js"></script>
+    <script src="http://papirovehodinky.cz/backend/js/moment.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#frm-feedForm-beg').datetimepicker();
+        $('#frm-feedForm-fin').datetimepicker();
+        $('#frm-cleanForm-beg').datetimepicker();
+        $('#frm-cleanForm-fin').datetimepicker();        
+        $('#frm-animalForm-bd').datetimepicker();
+    });
+    </script>
+  </body>
+</html>

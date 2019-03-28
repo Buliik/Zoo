@@ -1,0 +1,33 @@
+{block content}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+         
+         <div class="form-group"> <a n:href="add" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Přidat záznam</a> </div>
+{if count($trains)>0}
+                            <table class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ošetřovatel</th>                                      
+                                        <th>Druh</th>
+                                        <th>Akce</th>                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach $trains as $train}
+                                        <tr>
+                                            <td>{$train->id}</td>
+                                            <td>{$train->ref('osetrovatel','idpr')->jmeno} {$train->ref('osetrovatel','idpr')->prijmeni}</td>
+                                            <td>{$train->druh}</td>                                          
+                                            <td><a  n:href="edit, $train->id" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i>Editovat</a><a n:href="delete!, $train->id" class="btn btn-danger btn-sm"><i class="fa fa-eye"></i>Odstranit</a></td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                        {else}
+                            <div class="alert alert-info">
+                                V systému není žádné školení.
+                            </div>
+{/if}
+</div></div></div>
